@@ -1,0 +1,11 @@
+#!/bin/sh
+# Start up spark cluster with name `gaming-spark`
+
+gcloud dataproc clusters create gaming-spark \
+    --image-version=1.0 \
+    --zone=us-central1-f \
+    --num-workers=15 \
+    --worker-machine-type=n1-standard-8 \
+    --master-machine-type=n1-standard-8 \
+    --worker-boot-disk-size=100gb \
+    --master-boot-disk-size=100gb

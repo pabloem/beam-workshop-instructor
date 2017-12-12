@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Run the injector to add data to PubSub
+mvn clean compile exec:java@injector -Dexec.args="--pubsubTopic=$PUBSUB_TOPIC --gcpProject=$GCP_PROJECT"
+
+############
+# IF you are looking to inject data to Kafka, specify --kafkaBootstrapServer and --kafkaTopic.
+#
+###########
+# IF you are looking to create a new file with some data for a Batch pipeline,
+# simply run the `mvn clean compile....` command with the `--fileName=$FILE` command
+# line argument.
+#
+############

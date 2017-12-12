@@ -1,0 +1,14 @@
+#!/bin/sh
+# Copy Flink Cluster configuration
+gsutil cp dataproc-config/dataproc-flink-init.sh gs://apache-beam-demo/config/
+
+# Start up flink cluster, with name `gaming-flink`.
+gcloud dataproc clusters create gaming-flink \
+       --zone=us-central1-f \
+       --initialization-actions gs://apache-beam-demo/config/dataproc-flink-init.sh \
+       --initialization-action-timeout 5m \
+       --num-workers=20 \
+       --scopes=https://www.googleapis.com/auth/cloud-platform \
+       --worker-boot-disk-size=100gb \
+       --master-boot-disk-size=100gb
+
